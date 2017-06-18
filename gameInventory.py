@@ -3,12 +3,23 @@
 
 # Displays the inventory.
 def display_inventory(inventory):
-    pass
+    d = 0
+    print("Inventory:")
+    for item in inventory:
+        print (str(inventory.get(item)) + " " + str(item))
+        d += inventory.get(item)
+    print("Total number of items: %s" % d)
 
 
 # Adds to the inventory dictionary a list of items from added_items.
 def add_to_inventory(inventory, added_items):
-    pass
+    for item in added_items:
+        if item in inventory:
+            inventory[item] += 1
+        else:
+            inventory[item] = 1
+
+    return inventory
 
 
 # Takes your inventory and displays it in a well-organized table with 
@@ -19,7 +30,15 @@ def add_to_inventory(inventory, added_items):
 #   in descending order
 # - "count,asc" means the table is ordered by count in ascending order
 def print_table(inventory, order=None):
-    pass
+    d = 0
+    print("Inventory:")
+    print("  count    item name")
+    print("-" * 20)
+    for item in inventory:
+        print ((" " * (7 - len(str(inventory.get(item)))) + str(inventory.get(item)) + (" " * (13 - len(item))) + str(item)))
+        d += inventory.get(item)
+    print("-" * 20)
+    print("Total number of items: %s" % d)
 
 
 # Imports new inventory items from a file
